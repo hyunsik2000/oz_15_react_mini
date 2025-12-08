@@ -55,6 +55,7 @@ export function useFetch(url) {
         error: null,
         promise: null,
       });
+      console.log(json);
       resolve(json); // Suspense가 다시 렌더하도록 resolve
     })
     .catch((err) => {

@@ -11,9 +11,7 @@ export function MovieCard({ movieItem, onClick }) {
             <img src={imgSrc} alt={movieItem} className="h-full object-cover" />
           </div>
         </li>
-        <li className="w-full truncate font-medium">
-          {movieItem.original_title}
-        </li>
+        <li className="w-full truncate font-medium">{movieItem.title}</li>
         <li className="text-sm text-gray-300">
           {movieItem.vote_average.toFixed(1)}
         </li>

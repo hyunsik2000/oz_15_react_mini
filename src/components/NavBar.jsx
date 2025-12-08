@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NAV_LINK } from "../data/path";
+import { NAV_LINK } from "../constants/path";
 
 export function NavBar() {
   return (

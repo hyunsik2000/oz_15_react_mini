@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
-import { TMDB_IMAGE_BASE_URL } from "../../constants/tmdb";
+import { TMDB_API_BASE_URL, TMDB_IMAGE_BASE_URL } from "../../constants/tmdb";
 
 export function MovieDetail() {
   const { id } = useParams();
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+  const url = `${TMDB_API_BASE_URL}/movie/${id}?language=ko-KR`;
 
   const { data: movieDetail } = useFetch(url);
 
