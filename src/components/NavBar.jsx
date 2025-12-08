@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { NAV_LINK } from "../constants/path";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useState } from "react";
+import { SearchBar } from "./MovieSearch/SearchBar";
 
 export function NavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -30,16 +31,15 @@ export function NavBar() {
           >
             검색
           </button>
-          <input
-            type="text"
-            className={`transform rounded bg-white px-1 py-1 text-sm text-black transition-all duration-300 ${isSearchOpen ? "max-w-[155px] opacity-100" : "max-w-0 opacity-0"} `}
-          />
+          <div>
+            <SearchBar isSearchOpen={isSearchOpen} />
+          </div>
           <button className="rounded bg-red-600 px-3 py-1.5 text-xs font-semibold hover:bg-red-700">
             로그인
           </button>
         </div>
         <button
-          className="cursor-pointer text-2xl text-gray-300 sm:hidden"
+          className="text-2xl text-gray-300 sm:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           {isMenuOpen ? <HiX /> : <HiMenu />}
