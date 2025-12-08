@@ -2,9 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "@hooks/useFetch";
 import { useState } from "react";
-import { TMDB_API_BASE_URL } from "../../constants/tmdb";
+import { TMDB_API_BASE_URL } from "@constants/tmdb";
 
 export function MovieList() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
-import { TMDB_API_BASE_URL, TMDB_IMAGE_BASE_URL } from "../../constants/tmdb";
+import { useFetch } from "@hooks/useFetch";
+import { TMDB_API_BASE_URL, TMDB_IMAGE_BASE_URL } from "@constants/tmdb";
 
 export function MovieDetail() {
   const { id } = useParams();
@@ -11,34 +11,37 @@ export function MovieDetail() {
   const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieDetail.poster_path}`;
 
   return (
-    <section className="flex max-w-5xl flex-col items-center sm:flex-row">
+    <section className="mx-auto flex max-w-5xl flex-col items-center sm:flex-row">
       <img
         src={imgSrc}
         alt={movieDetail.title}
-        className="h-full w-full p-[10px_20px] sm:w-[50%]"
+        className="aspect-2/3 w-full p-[10px_20px] sm:w-[50%]"
       />
 
-      <ul className="flex flex-col gap-4 p-[10px_20px]">
+      <ul className="flex flex-1 flex-col gap-4 p-[10px_20px]">
         <li className="flex-between">
-          <p className="flex-between text-xl md:text-3xl lg:text-4xl">
+          <p className="text-xl font-semibold text-[#111827] md:text-3xl lg:text-4xl dark:text-[#F9FAFB]">
             {movieDetail.title}
           </p>
-          <p className="flex-between text-xl md:text-xl lg:text-2xl">
+          <p className="text-lg font-semibold text-red-600 md:text-xl lg:text-2xl">
             {movieDetail.vote_average.toFixed(1)}
           </p>
         </li>
 
-        <li className="flex flex-wrap items-center gap-4 gap-y-2">
+        <li className="flex flex-wrap items-center gap-3 gap-y-2">
           {movieDetail.genres.map((el) => (
-            <span key={el.id} className="md:text-md text-sm lg:text-xl">
+            <span
+              key={el.id}
+              className="rounded-full bg-[#E5E7EB] px-3 py-1 text-xs font-medium text-[#374151] md:text-sm dark:bg-[#272A30] dark:text-[#E5E7EB]"
+            >
               {el.name}
             </span>
           ))}
         </li>
 
         <li>
-          <p className="text-lg md:text-lg lg:text-2xl">
-            {movieDetail.overview}
+          <p className="text-sm leading-relaxed text-[#374151] md:text-base lg:text-lg dark:text-[#E5E7EB]">
+            {movieDetail.overview || "줄거리 정보가 없습니다."}
           </p>
         </li>
       </ul>
