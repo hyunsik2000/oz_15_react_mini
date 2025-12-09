@@ -2,14 +2,12 @@ import { Link } from "react-router-dom";
 import { NAV_LINK } from "@constants/path";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useState } from "react";
-import { SearchBar } from "./MovieSearch/SearchBar";
-import { useThemeStore } from "@store/useThemeStore";
-import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
+import { SearchBar } from "../MovieSearch/SearchBar";
+import { ThemeButton } from "./ThemeButton";
 
 export function NavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useThemeStore();
 
   return (
     <header className="app-theme fixed top-0 left-0 z-50 w-full">
@@ -29,27 +27,13 @@ export function NavBar() {
           </nav>
         </div>
         <div className="hidden items-center gap-2 text-sm text-gray-300 sm:flex">
-          <button
-            onClick={toggleTheme}
-            className="flex cursor-pointer items-center rounded bg-gray-600 px-1 py-1 text-xs text-black dark:bg-gray-400 dark:text-white"
-          >
-            {theme === "dark" ? (
-              <>
-                <HiOutlineSun className="text-yellow-400" size={22} />
-              </>
-            ) : (
-              <>
-                <HiOutlineMoon className="text-blue-300" size={22} />
-              </>
-            )}
-          </button>
+          <ThemeButton />
           <button
             onClick={() => setIsSearchOpen((prev) => !prev)}
             className="cursor-pointer text-[#4B5563] transition-colors hover:text-black dark:text-[#D1D5DB] dark:hover:text-white"
           >
             검색
           </button>
-
           <SearchBar isSearchOpen={isSearchOpen} />
           <button className="rounded bg-red-600 px-3 py-1.5 text-xs font-semibold hover:bg-red-700">
             로그인
