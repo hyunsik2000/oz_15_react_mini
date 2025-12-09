@@ -20,7 +20,7 @@ export function UserInputField({
         type={type}
         placeholder={placeholder}
         autoComplete="off"
-        className="transitionfocus:outline-none rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+        className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
         {...inputProps}
       />
       {error && <p className="text-sm text-red-500">{error}</p>}
