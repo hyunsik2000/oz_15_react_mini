@@ -2,13 +2,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "@hooks/useFetch";
 import { useState } from "react";
+import { TMDB_API_BASE_URL } from "@constants/tmdb";
 
 export function MovieList() {
   const navigate = useNavigate();
-  const url =
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+  const url = `${TMDB_API_BASE_URL}/movie/popular?language=ko-KR&page=1`;
 
   const { data } = useFetch(url);
   const [movies] = useState(() =>
@@ -17,7 +17,6 @@ export function MovieList() {
 
   return (
     <Swiper
-      slidesPerView={"auto"}
       spaceBetween={20}
       breakpoints={{
         0: { slidesPerView: 1 },
