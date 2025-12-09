@@ -27,7 +27,6 @@ export function NavBar() {
           </nav>
         </div>
         <div className="hidden items-center gap-2 text-sm text-gray-300 sm:flex">
-          <ThemeButton />
           <button
             type="button"
             onClick={() => setIsSearchOpen((prev) => !prev)}
@@ -42,6 +41,7 @@ export function NavBar() {
           >
             로그인
           </button>
+          <ThemeButton />
         </div>
         <button
           type="button"

@@ -1,11 +1,6 @@
 import { UserInputField } from "@/components/InputField/UserInputField";
 import { useState } from "react";
-import {
-  validateName,
-  validateEmail,
-  validatePassword,
-  validatePasswordConfirm,
-} from "@/utils/validateForm";
+import { validateEmail, validatePassword } from "@/utils/validateForm";
 
 export function Login() {
   const [form, setForm] = useState({
