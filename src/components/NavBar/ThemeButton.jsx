@@ -5,6 +5,7 @@ export function ThemeButton() {
   const { theme, toggleTheme } = useThemeStore();
   return (
     <button
+      type="button"
       onClick={toggleTheme}
       className="flex cursor-pointer items-center rounded bg-gray-600 px-1 py-1 text-xs text-black dark:bg-gray-400 dark:text-white"
     >

@@ -29,17 +29,22 @@ export function NavBar() {
         <div className="hidden items-center gap-2 text-sm text-gray-300 sm:flex">
           <ThemeButton />
           <button
+            type="button"
             onClick={() => setIsSearchOpen((prev) => !prev)}
             className="cursor-pointer text-[#4B5563] transition-colors hover:text-black dark:text-[#D1D5DB] dark:hover:text-white"
           >
             검색
           </button>
           <SearchBar isSearchOpen={isSearchOpen} />
-          <button className="rounded bg-red-600 px-3 py-1.5 text-xs font-semibold hover:bg-red-700">
+          <button
+            type="button"
+            className="rounded bg-red-600 px-3 py-1.5 text-xs font-semibold hover:bg-red-700"
+          >
             로그인
           </button>
         </div>
         <button
+          type="button"
           className="text-2xl text-gray-300 sm:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
@@ -57,7 +62,10 @@ export function NavBar() {
               </Link>
             </li>
           ))}
-          <button className="w-full rounded bg-red-600 px-3 py-1 text-lg font-semibold text-white transition-colors hover:bg-red-700">
+          <button
+            type="button"
+            className="w-full rounded bg-red-600 px-3 py-1 text-lg font-semibold text-white transition-colors hover:bg-red-700"
+          >
             로그인
           </button>
         </ul>
