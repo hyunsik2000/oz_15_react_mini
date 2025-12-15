@@ -11,7 +11,7 @@ export function MovieCard({ movieItem, onClick }) {
             alt={movieItem.title}
             width="100%"
             height="100%"
-            className="aspect-2/3 w-full"
+            className="aspect-2/3 h-full w-full"
           />
         </li>
         <li className="w-full truncate font-medium">{movieItem.title}</li>

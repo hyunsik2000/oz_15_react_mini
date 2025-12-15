@@ -30,7 +30,7 @@ export function NavBar() {
           <button
             type="button"
             onClick={() => setIsSearchOpen((prev) => !prev)}
-            className="cursor-pointer text-[#4B5563] transition-colors hover:text-black dark:text-[#D1D5DB] dark:hover:text-white"
+            className="cursor-pointer text-[#4B5563] hover:text-black dark:text-[#D1D5DB] dark:hover:text-white"
           >
             검색
           </button>
@@ -52,7 +52,7 @@ export function NavBar() {
         </button>
       </div>
       <div
-        className={`px-6 text-white transition-all duration-500 sm:hidden ${isMenuOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"} `}
+        className={`px-6 text-white duration-500 sm:hidden ${isMenuOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"} `}
       >
         <ul className="nav-link-list flex flex-col gap-4 py-4">
           {NAV_LINK.map((el) => (
