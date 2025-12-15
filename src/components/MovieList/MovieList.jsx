@@ -3,36 +3,33 @@ import "swiper/css";
 import { useNavigate } from "react-router-dom";
 import { MovieCard } from "../MovieCard";
 import { fetchMovies } from "@/utils/fetchMovies";
-import { useState } from "react";
-import { TMDB_API_BASE_URL } from "@constants/tmdb";
 
-export function MovieList() {
+export function MovieList({ url }) {
   const navigate = useNavigate();
-  const url = `${TMDB_API_BASE_URL}/movie/popular?language=ko-KR&page=1`;
-
   const { data } = fetchMovies(url);
-  const [movies] = useState(() =>
-    data.results.filter((result) => result.adult === false),
-  );
+
+  const movies = data?.results?.filter((movie) => !movie.adult) ?? [];
 
   return (
-    <Swiper
-      spaceBetween={20}
-      breakpoints={{
-        0: { slidesPerView: 1 },
-        640: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        1024: { slidesPerView: 4 },
-      }}
-    >
-      {movies.map((movie) => (
-        <SwiperSlide key={movie.id}>
-          <MovieCard
-            movieItem={movie}
-            onClick={() => navigate(`/details/${movie.id}`)}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="w-full max-w-7xl overflow-hidden">
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        }}
+      >
+        {movies.map((movie) => (
+          <SwiperSlide key={movie.id}>
+            <MovieCard
+              movieItem={movie}
+              onClick={() => navigate(`/details/${movie.id}`)}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }
