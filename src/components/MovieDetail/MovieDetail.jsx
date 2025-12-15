@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { fetchMovies } from "@/utils/fetchMovies";
 import { TMDB_API_BASE_URL, TMDB_IMAGE_BASE_URL } from "@constants/tmdb";
+import { CommonThumbnail } from "../common/CommonThumbnail";
 
 export function MovieDetail() {
   const { id } = useParams();
@@ -8,17 +9,23 @@ export function MovieDetail() {
 
   const { data: movieDetail } = fetchMovies(url);
 
+  if (!movieDetail) return null;
+
   const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieDetail.poster_path}`;
 
   return (
-    <section className="mx-auto flex max-w-5xl flex-col items-center sm:flex-row">
-      <img
+    <section className="mx-auto flex max-w-5xl flex-col items-center gap-4 p-[10px_20px] sm:flex-row">
+      <CommonThumbnail
         src={imgSrc}
         alt={movieDetail.title}
-        className="aspect-2/3 w-full p-[10px_20px] sm:w-[50%]"
+        height="100%"
+        width="100%"
+        className="aspect-2/3 w-full sm:w-[50%]"
+        objectFit="object-cover"
+        skeletonClassName="rounded"
       />
 
-      <ul className="flex flex-1 flex-col gap-4 p-[10px_20px]">
+      <ul className="flex flex-1 flex-col gap-4">
         <li className="flex-between">
           <p className="text-xl font-semibold text-[#111827] md:text-3xl lg:text-4xl dark:text-[#F9FAFB]">
             {movieDetail.title}

@@ -1,24 +1,18 @@
-import { useLazyImage } from "@/hooks/useLazyImage";
 import { TMDB_IMAGE_BASE_URL } from "@constants/tmdb";
+import { CommonThumbnail } from "./common/CommonThumbnail";
 
 export function MovieCard({ movieItem, onClick }) {
-  const imgSrc = `${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`;
-  const { imgRef, src, onError } = useLazyImage();
-
   return (
     <article className="cursor-pointer" onClick={onClick}>
       <ul className="flex flex-col gap-2">
         <li>
-          <div className="aspect-2/3 w-full">
-            <img
-              ref={imgRef}
-              src={src}
-              data-src={imgSrc}
-              alt={movieItem.title}
-              onError={onError}
-              className="h-full object-cover"
-            />
-          </div>
+          <CommonThumbnail
+            src={`${TMDB_IMAGE_BASE_URL}${movieItem.poster_path}`}
+            alt={movieItem.title}
+            width="100%"
+            height="100%"
+            className="aspect-2/3 w-full"
+          />
         </li>
         <li className="w-full truncate font-medium">{movieItem.title}</li>
         <li className="text-sm dark:text-gray-300">

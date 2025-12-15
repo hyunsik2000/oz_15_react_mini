@@ -6,22 +6,22 @@ export function useLazyImage() {
   const [src, setSrc] = useState();
 
   useEffect(() => {
-    const node = imgRef.current;
-    if (!node) return;
+    const imgNode = imgRef.current;
+    if (!imgNode) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const lazySrc = node.dataset.src;
+            const lazySrc = imgNode.dataset.src;
             if (lazySrc) setSrc(lazySrc);
-            observer.unobserve(node);
+            observer.unobserve(imgNode);
           }
         });
       },
       { threshold: 0.1 },
     );
-    observer.observe(node);
+    observer.observe(imgNode);
     return () => observer.disconnect();
   }, []);
 
