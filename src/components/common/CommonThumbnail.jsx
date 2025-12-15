@@ -7,7 +7,7 @@ export function CommonThumbnail({
   alt,
   width,
   height,
-  className = "",
+  propsClass = "",
   objectFit = "object-cover",
 }) {
   const [loaded, setLoaded] = useState(false);
@@ -15,7 +15,7 @@ export function CommonThumbnail({
 
   return (
     <div
-      className={`rounded bg-gray-300 dark:bg-[#1E2024] ${width ? `w-[${width}]` : ""} ${height ? `h-[${height}]` : ""} ${className} `}
+      className={`rounded bg-gray-300 dark:bg-[#1E2024] ${width ? `w-[${width}]` : ""} ${height ? `h-[${height}]` : ""} ${propsClass} `}
     >
       <img
         ref={imgRef}
